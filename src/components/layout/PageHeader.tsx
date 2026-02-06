@@ -15,14 +15,20 @@ export function PageHeader({ title, subtitle, action, className, showBackButton 
   const navigate = useNavigate();
 
   return (
-    <header className={cn("sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b", className)}>
+    <header 
+      className={cn(
+        "sticky top-0 z-40 border-b border-border",
+        "bg-card/80 backdrop-blur-xl supports-[backdrop-filter]:bg-card/60",
+        className
+      )}
+    >
       <div className="flex items-center justify-between px-4 py-4">
         <div className="flex items-center gap-3">
           {showBackButton && (
             <Button 
               variant="ghost" 
               size="icon" 
-              className="h-9 w-9 shrink-0"
+              className="h-10 w-10 shrink-0 rounded-xl hover:bg-secondary"
               onClick={() => navigate(-1)}
             >
               <ArrowLeft className="h-5 w-5" />

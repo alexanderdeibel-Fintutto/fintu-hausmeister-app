@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { 
-  ClipboardList, 
-  Building, 
-  Calendar, 
+import {
+  ClipboardList,
+  Building,
+  Calendar,
   MessageSquare,
-  Plus,
-  QrCode
+  Camera,
+  Phone,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -13,8 +13,8 @@ interface QuickAction {
   label: string;
   icon: React.ElementType;
   href: string;
-  color: string;
-  bgColor: string;
+  gradient: string;
+  shadowColor: string;
 }
 
 const actions: QuickAction[] = [
@@ -22,29 +22,29 @@ const actions: QuickAction[] = [
     label: "Aufgaben",
     icon: ClipboardList,
     href: "/aufgaben",
-    color: "text-primary",
-    bgColor: "bg-primary/10 hover:bg-primary/20",
+    gradient: "from-primary to-accent",
+    shadowColor: "shadow-primary/30",
   },
   {
     label: "Objekte",
     icon: Building,
     href: "/objekte",
-    color: "text-blue-600",
-    bgColor: "bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50",
+    gradient: "from-blue-500 to-cyan-500",
+    shadowColor: "shadow-blue-500/30",
   },
   {
     label: "Kalender",
     icon: Calendar,
     href: "/kalender",
-    color: "text-purple-600",
-    bgColor: "bg-purple-100 hover:bg-purple-200 dark:bg-purple-900/30 dark:hover:bg-purple-900/50",
+    gradient: "from-purple-500 to-pink-500",
+    shadowColor: "shadow-purple-500/30",
   },
   {
     label: "Nachrichten",
     icon: MessageSquare,
     href: "/nachrichten",
-    color: "text-orange-600",
-    bgColor: "bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50",
+    gradient: "from-orange-500 to-amber-500",
+    shadowColor: "shadow-orange-500/30",
   },
 ];
 
@@ -54,19 +54,46 @@ export function QuickActions() {
       <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
         Schnellzugriff
       </h2>
-      
+
       <div className="grid grid-cols-4 gap-3">
-        {actions.map((action) => (
+        {actions.map((action, index) => (
           <Link
             key={action.label}
             to={action.href}
             className={cn(
-              "flex flex-col items-center gap-2 rounded-xl p-4 transition-all active:scale-95",
-              action.bgColor
+              "group relative flex flex-col items-center gap-2 rounded-2xl bg-card border border-border p-4",
+              "transition-all duration-300 hover:border-primary/30 active:scale-95",
+              "hover:shadow-lg",
+              action.shadowColor
             )}
+            style={{ animationDelay: `${index * 50}ms` }}
           >
-            <action.icon className={cn("h-6 w-6", action.color)} />
-            <span className="text-xs font-medium text-foreground">{action.label}</span>
+            {/* Icon container with gradient */}
+            <div
+              className={cn(
+                "flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br transition-all duration-300",
+                "group-hover:scale-110 group-hover:shadow-lg",
+                action.gradient,
+                action.shadowColor
+              )}
+            >
+              <action.icon className="h-6 w-6 text-white drop-shadow-sm" />
+            </div>
+
+            {/* Label */}
+            <span className="text-xs font-medium text-foreground text-center">
+              {action.label}
+            </span>
+
+            {/* Hover glow effect */}
+            <div
+              className={cn(
+                "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10",
+                "bg-gradient-to-br blur-xl",
+                action.gradient
+              )}
+              style={{ opacity: 0.1 }}
+            />
           </Link>
         ))}
       </div>
