@@ -115,7 +115,7 @@ export default function TasksPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-40">
+    <div className="min-h-screen pb-40">
       <PageHeader
         title="Aufgaben"
         subtitle={`${counts.open} offen`}

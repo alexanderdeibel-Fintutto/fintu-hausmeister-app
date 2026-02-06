@@ -52,7 +52,7 @@ export default function BuildingDetailPage() {
   const [units] = useState<Unit[]>(mockUnits);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b">
         <div className="flex items-center gap-3 px-4 py-4">

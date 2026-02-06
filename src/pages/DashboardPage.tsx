@@ -159,7 +159,7 @@ export default function DashboardPage() {
   const activeTrigger = triggers.find((t) => t.is_active);
 
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <div className="min-h-screen pb-24">
       <div className="px-4 py-6 space-y-6">
         {/* Greeting Header */}
         <GreetingHeader userName={mockUser.full_name} />
