@@ -15,7 +15,7 @@ export default function AppsPage() {
   const getAppById = (appId: string) => apps.find(app => app.app_id === appId);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <PageHeader 
         title="Fintutto Apps" 
         showBackButton 

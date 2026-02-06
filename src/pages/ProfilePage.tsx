@@ -71,7 +71,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <PageHeader title="Profil" />
 
       <div className="px-4 py-4 space-y-4">

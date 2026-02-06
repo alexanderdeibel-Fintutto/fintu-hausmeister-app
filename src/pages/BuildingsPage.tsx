@@ -66,7 +66,7 @@ export default function BuildingsPage() {
   const totalOpenTasks = buildings.reduce((sum, b) => sum + b.openTasks, 0);
 
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <div className="min-h-screen pb-24">
       <PageHeader
         title="Objekte"
         subtitle={`${buildings.length} Gebäude • ${totalOpenTasks} offene Aufgaben`}
